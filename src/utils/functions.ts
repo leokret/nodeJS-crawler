@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const makeXmlFromJson = async (json, parent) => {   
   let item: any
 
@@ -15,3 +17,13 @@ export const makeXmlFromJson = async (json, parent) => {
 
   return parent;
 };
+
+export const getCookies = async (url) => {
+  return await axios.get(url, {withCredentials: true}).then(response => {
+    if (response.status === 200) {
+      return response.headers['set-cookie']
+    } else {
+      return null;
+    }
+  })
+}
