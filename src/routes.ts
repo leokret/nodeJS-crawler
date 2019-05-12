@@ -4,6 +4,6 @@ import LoginController from './controllers/LoginController'
 
 const routes = Router()
 
-routes.get('/', LoginController.index)
+routes.post('/', LoginController.index)
 
 export default routes
