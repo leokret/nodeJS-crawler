@@ -4,7 +4,6 @@ import LoginController from './controllers/LoginController'
 
 const routes = Router()
 
-routes.post('/', LoginController.parseJson)
-routes.get('/', LoginController.getCookie)
+routes.post('/', LoginController.makeLogin)
 
 export default routes
