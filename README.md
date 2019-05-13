@@ -1,7 +1,16 @@
 # nodeJS-crawler
 Login on GitHub with RESTful api and get username logged.
 
-# Build
+# Start project
+yarn to install modules
+yarn start to run nodemon on port 3000
+
+# Endpoints
+POST api/github/ make login and return username
+-body: {
+	"username": "user",
+	"password": "pass"
+}
 
 # License (MIT)
 Copyright (C) 2019 by Leonardo Ferreira leonardofalcoxx@gmail.com
