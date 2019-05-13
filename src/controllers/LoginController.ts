@@ -1,19 +1,32 @@
 import { Request, Response } from "express";
-import { makeXmlFromJson, getCookies } from "../utils/functions";
+import {
+  findItemHtml,
+  getCookies,
+  buildData,
+  buildConfig,
+  makeLogin,
+  getHtmlHome,
+  findUsernameprofile
+} from "../utils/functions";
+import axios from "axios";
 
 class LoginController {
-  public async parseJson(req: Request, res: Response) {
-    const xmlString =
-      `<?xml version='1.0' encoding='UTF-8'?><root>` +
-      (await makeXmlFromJson(req.body, "")) +
-      "</root>";
+  public async makeLogin(req: Request, res: Response) {
+    const { username, password } = req.body;
+    const uriBase = "https://github.com/";
+    let cookies = await getCookies(uriBase + "login");
+    const token = await axios.get(uriBase + "login").then(response => {
+      cookies = response.headers["set-cookie"];
+      return findItemHtml(response.data, "input", "name", "authenticity_token");
+    });
+    const data = buildData(username, password, token);
+    const config = buildConfig(cookies);
 
-    return res.set("Content-Type", "text/xml").send(xmlString);
-  }
+    cookies = await makeLogin(uriBase, data, config);
 
-  public async getCookie(req , res: Response) {
-    const cookies = await getCookies("https://github.com/session");
-    return res.send(cookies);
+    const htmlHomePage = (await getHtmlHome(cookies, uriBase, res)).data;
+
+    return res.send(findUsernameprofile(htmlHomePage));
   }
 }
 
