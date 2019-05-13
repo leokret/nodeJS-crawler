@@ -2,14 +2,14 @@
 Login on GitHub with RESTful api and get username logged.
 
 # Start project
-yarn to install modules
+yarn to install modules <br/>
 yarn start to run nodemon on port 3000
 
 # Endpoints
 POST api/github/ make login and return username
--body: {
-	"username": "user",
-	"password": "pass"
+-body: {<br/>
+	"username": "user",<br/>
+	"password": "pass"<br/>
 }
 
 # License (MIT)
