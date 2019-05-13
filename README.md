@@ -10,7 +10,7 @@ yarn test run tests
 
 # Endpoints
 POST api/github/ make login and return username
--body: <br/>
+<br/> -body: <br/>
 {<br/>
 	"username": "user",<br/>
 	"password": "pass"<br/>
