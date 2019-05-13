@@ -7,7 +7,8 @@ yarn start to run nodemon on port 3000
 
 # Endpoints
 POST api/github/ make login and return username
--body: {<br/>
+-body: <br/>
+{<br/>
 	"username": "user",<br/>
 	"password": "pass"<br/>
 }
