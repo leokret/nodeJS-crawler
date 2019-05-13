@@ -5,6 +5,9 @@ Login on GitHub with RESTful api and get username logged.
 yarn to install modules <br/>
 yarn start to run nodemon on port 3000
 
+# Test
+yarn test run tests
+
 # Endpoints
 POST api/github/ make login and return username
 -body: <br/>
